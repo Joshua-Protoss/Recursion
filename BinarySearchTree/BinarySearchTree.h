@@ -147,7 +147,7 @@ private:
             // we remove a node with two children case !!!
             std::cout << "Removing item with two children...\n";
             // we find the largest item in the left subtree (or the smallest in the right subtree is valid)
-            std::unique_ptr<Node> temp = detachRightMost(nodeRef->left);
+            std::unique_ptr<Node> temp = detachRightMost(nodeRef->left); // looking for predecessor (the largest node on the left)
 
             temp->right = std::move(nodeRef->right);
             std::unique_ptr<Node> &tempLeftMost = getLeftMost(temp);

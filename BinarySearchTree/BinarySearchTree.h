@@ -73,7 +73,7 @@ public:
         if (!root)
             throw EmptyTreeException{};
         
-            return getMin(root.get());
+        return getMin(root.get());
     }
 
 private:
@@ -151,6 +151,7 @@ private:
 
             temp->right = std::move(nodeRef->right);
             std::unique_ptr<Node> &tempLeftMost = getLeftMost(temp);
+            tempLeftMost->left = std::move(nodeRef->left);
              // destroys the object currently managed by the unique_ptr
             nodeRef.reset();
             nodeRef = std::move(temp);
@@ -182,7 +183,7 @@ private:
     // get the smallest item in the tree in O(logN)
     const t_Data &getMin(Node *node) const {
         // we are after the leftmost node
-        if (node-left) {
+        if (node->left) {
             return getMin(node->left.get());
         }
         return node->data;

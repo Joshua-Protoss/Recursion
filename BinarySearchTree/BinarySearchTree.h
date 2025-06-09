@@ -110,7 +110,7 @@ private:
             inOrderTraversal(node->right.get());
     }
 
-    void remove(const t_Data &data, std::unique_ptr<Node> &nodeRef) {
+    void remove(const t_Data &data, std::unique_ptr<Node> &nodeRef) { // nodeRef start with the root node
         // first we have to find the node we want to remove
         if (data < nodeRef->data){
             if (nodeRef->left)
